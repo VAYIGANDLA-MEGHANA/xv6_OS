@@ -339,7 +339,7 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
-      for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      /*for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
       highP = p;
@@ -351,8 +351,8 @@ scheduler(void)
           highP = p1;
       }
       p = highP;
-      proc = p;
-      //c->proc = p;
+      proc = p;*/
+      c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
 

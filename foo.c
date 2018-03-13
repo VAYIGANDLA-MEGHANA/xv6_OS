@@ -29,7 +29,7 @@ main(int argc, char *argv[])
       break;
     }
   }
-  for ( z = 0; z < 300000.0; z += 0.1 )
+  for ( z = 0; z < 300.0; z += 10.1 )
        x =  x + 3.14 * 89.64;   // useless calculations to consume CPU time
   exit();
 }

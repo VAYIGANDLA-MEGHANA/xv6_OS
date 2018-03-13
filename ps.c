@@ -6,7 +6,7 @@
 int
 main(int argc, char *argv[])
 {
-  chpr(int,int);
+  cps();
 
   exit();
 }

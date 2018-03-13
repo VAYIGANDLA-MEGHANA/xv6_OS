@@ -26,10 +26,12 @@ main(int argc, char *argv[])
      // wait ();
    } else {   // child
       printf(1, "Child %d created\n",getpid() );
+      //while(1);
+      for ( z = 0; z < 300000000000.0; z += 0.01 )
+       x =  x + 3.14 * 89.64; 
       break;
     }
   }
-  for ( z = 0; z < 30.0; z += 0.01 )
-       x =  x + 3.14 * 89.64;   // useless calculations to consume CPU time
+    // useless calculations to consume CPU time
   exit();
 }

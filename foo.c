@@ -18,7 +18,7 @@ main(int argc, char *argv[])
   x = 0;
   id = 0;
   for ( k = 0; k < n; k++ ) {
-    id = fork ();
+    id = setsid();
     if ( id < 0 ) {
       printf(1, "%d failed in fork!\n", getpid() );
     } else if ( id > 0 ) {  //parent

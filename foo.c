@@ -18,18 +18,18 @@ main(int argc, char *argv[])
   x = 0;
   id = 0;
   for ( k = 0; k < n; k++ ) {
-    id = setsid();
+    id = fork ();
     if ( id < 0 ) {
       printf(1, "%d failed in fork!\n", getpid() );
     } else if ( id > 0 ) {  //parent
       printf(1, "Parent %d creating child  %d\n", getpid(), id );
-      wait ();
+     // wait ();
    } else {   // child
       printf(1, "Child %d created\n",getpid() );
-      for ( z = 0; z < 8000000.0; z += 10.01 )
-         x =  x + 3.14 * 89.64;   // useless calculations to consume CPU time
       break;
     }
   }
+  for ( z = 0; z < 300000.0; z += 0.1 )
+       x =  x + 3.14 * 89.64;   // useless calculations to consume CPU time
   exit();
 }

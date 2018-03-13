@@ -530,7 +530,7 @@ cps()
         cprintf("%s \t %d  \t SLEEPING \t %d \n ", p->name, p->pid,p->priority);
       else if ( p->state == RUNNING )
         cprintf("%s \t %d  \t RUNNING \t %d \n ", p->name, p->pid,p->priority);
-      else
+      else if(p->state == RUNNABLE)
         cprintf("%s \t %d  \t RUNNABLE \t %d \n ", p->name, p->pid,p->priority);
   }
   

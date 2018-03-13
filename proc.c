@@ -339,7 +339,7 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
-      /*for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
       highP = p;
@@ -351,7 +351,7 @@ scheduler(void)
           highP = p1;
       }
       p = highP;
-      proc = p;*/
+      //proc = p;
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
@@ -543,8 +543,10 @@ cps()
         cprintf("%s \t %d  \t SLEEPING \t %d \n ", p->name, p->pid,p->priority);
       else if ( p->state == RUNNING )
         cprintf("%s \t %d  \t RUNNING \t %d \n ", p->name, p->pid,p->priority);
-      else if(p->pid)
+      else if(p->pid){
+        p->state="RUNNABLE";
         cprintf("%s \t %d  \t RUNNABLE \t %d \n ", p->name, p->pid,p->priority);
+      }
   }
   
   release(&ptable.lock);

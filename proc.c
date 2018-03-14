@@ -544,7 +544,7 @@ cps()
       else if ( p->state == RUNNING )
         cprintf("%s \t %d  \t RUNNING \t %d \n ", p->name, p->pid,p->priority);
       else if(p->pid){
-        p->state="RUNNABLE";
+        //p->state="RUNNABLE";
         cprintf("%s \t %d  \t RUNNABLE \t %d \n ", p->name, p->pid,p->priority);
       }
   }

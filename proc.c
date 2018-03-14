@@ -6,7 +6,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
-
+# define NULL 0
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
@@ -323,13 +323,15 @@ void
 scheduler(void)
 {
   struct proc *p;
+  struct proc *p1;
+  
   struct cpu *c = mycpu();
   c->proc = 0;
   
   for(;;){
     // Enable interrupts on this processor.
     sti();
-
+    struct proc *highP = NULL;
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
@@ -341,7 +343,7 @@ scheduler(void)
       // before jumping back to us.
       /*for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
-        continue;
+        continue;*/
       highP = p;
       // choose one with highest priority
       for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){

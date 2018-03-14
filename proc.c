@@ -554,7 +554,7 @@ cps()
   return 22;
 }
 
-void help(){
+int help(){
   cprintf("Command name \t Description\n");
   cprintf("ps \t Process status\n");
   cprintf("ls \t list files and directories\n");
@@ -566,6 +566,7 @@ void help(){
   cprintf("mkdir \t Make new directory\n");
   cprintf("kill (process name) \t to kill a process\n");
   //cprintf("Command name \t Description\n");
+  return 22;
 }
 //PAGEBREAK: 36
 // Print a process listing to console.  For debugging.

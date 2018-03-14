@@ -43,7 +43,7 @@ sys_cps ( void )
 {
   return cps ();
 }
-void 
+int 
 sys_help(void)
 {
   return help();

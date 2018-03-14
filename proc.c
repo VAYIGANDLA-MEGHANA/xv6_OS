@@ -339,7 +339,7 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
-      for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      /*for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state != RUNNABLE)
         continue;
       highP = p;
@@ -351,7 +351,7 @@ scheduler(void)
           highP = p1;
       }
       p = highP;
-      //proc = p;
+      //proc = p;*/
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
@@ -554,7 +554,19 @@ cps()
   return 22;
 }
 
-
+void help(){
+  cprintf("Command name \t Description\n");
+  cprintf("ps \t Process status\n");
+  cprintf("ls \t list files and directories\n");
+  cprintf("cd \t Change directory\n");
+  cprintf("foo (num) \t creates num child processes\n");
+  cprintf("rm \t remove files and directories\n");
+  cprintf("wc (filename) \t Word Count for the specified file\n");
+  cprintf("echo \t print text\n");
+  cprintf("mkdir \t Make new directory\n");
+  cprintf("kill (process name) \t to kill a process\n");
+  //cprintf("Command name \t Description\n");
+}
 //PAGEBREAK: 36
 // Print a process listing to console.  For debugging.
 // Runs when user types ^P on console.

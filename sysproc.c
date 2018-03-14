@@ -43,7 +43,11 @@ sys_cps ( void )
 {
   return cps ();
 }
-
+void 
+sys_help(void)
+{
+  return help();
+}
 int
 sys_kill(void)
 {

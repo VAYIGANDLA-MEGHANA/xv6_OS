@@ -555,16 +555,16 @@ cps()
 }
 
 int help(){
-  cprintf("Command name \t Description\n");
-  cprintf("ps \t Process status\n");
-  cprintf("ls \t list files and directories\n");
-  cprintf("cd \t Change directory\n");
-  cprintf("foo (num) \t creates num child processes\n");
-  cprintf("rm \t remove files and directories\n");
+  cprintf("Command name  \t Description\n");
+  cprintf("ps            \t Process status\n");
+  cprintf("ls            \t list files and directories\n");
+  cprintf("cd            \t Change directory\n");
+  cprintf("foo (num)     \t creates num child processes\n");
+  cprintf("rm            \t remove files and directories\n");
   cprintf("wc (filename) \t Word Count for the specified file\n");
-  cprintf("echo \t print text\n");
-  cprintf("mkdir \t Make new directory\n");
-  cprintf("kill (process name) \t to kill a process\n");
+  cprintf("echo          \t print text\n");
+  cprintf("mkdir         \t Make new directory\n");
+  cprintf("kill (pid)    \t to kill a process\n");
   //cprintf("Command name \t Description\n");
   return 22;
 }

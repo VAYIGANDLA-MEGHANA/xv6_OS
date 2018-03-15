@@ -557,16 +557,19 @@ cps()
 }
 
 int help(){
-  cprintf("Command name  \t Description\n");
-  cprintf("ps            \t Process status\n");
-  cprintf("ls            \t list files and directories\n");
-  cprintf("cd            \t Change directory\n");
-  cprintf("foo (num)     \t creates num child processes\n");
-  cprintf("rm            \t remove files and directories\n");
-  cprintf("wc (filename) \t Word Count for the specified file\n");
-  cprintf("echo          \t print text\n");
-  cprintf("mkdir         \t Make new directory\n");
-  cprintf("kill (pid)    \t to kill a process\n");
+  cprintf("Command name  \tDescription\n");
+  cprintf("ps            \tProcess status\n");
+  cprintf("ls            \tlist files and directories\n");
+  cprintf("cd            \tChange directory\n");
+  cprintf("foo (num)     \tcreates num child processes\n");
+  cprintf("rm            \tremove files and directories\n");
+  cprintf("wc (filename) \tWord Count for the specified file\n");
+  cprintf("echo          \tprint text\n");
+  cprintf("mkdir         \tMake new directory\n");
+  cprintf("kill (pid)    \tto kill a process\n");
+  cprintf("grep          \tsearches the named input\n");
+  cprintf("mv            \tmoves one or more files or directories from one place to another");
+  cprintf("cp            \tcopying files and directories");
   //cprintf("Command name \t Description\n");
   return 22;
 }

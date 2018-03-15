@@ -6,7 +6,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
-
+# define NULL 0
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
@@ -323,13 +323,15 @@ void
 scheduler(void)
 {
   struct proc *p;
+  struct proc *p1;
+  
   struct cpu *c = mycpu();
   c->proc = 0;
   
   for(;;){
     // Enable interrupts on this processor.
     sti();
-
+    struct proc *highP = NULL;
     // Loop over process table looking for process to run.
     acquire(&ptable.lock);
     for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
@@ -339,6 +341,19 @@ scheduler(void)
       // Switch to chosen process.  It is the process's job
       // to release ptable.lock and then reacquire it
       // before jumping back to us.
+      /*for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+      if(p->state != RUNNABLE)
+        continue;*/
+      highP = p;
+      // choose one with highest priority
+      for(p1 = ptable.proc; p1 < &ptable.proc[NPROC]; p1++){
+        if(p1->state != RUNNABLE)
+          continue;
+        if ( highP->priority > p1->priority )   // larger value, lower priority 
+          highP = p1;
+      }
+      p = highP;
+      //proc = p;*/
       c->proc = p;
       switchuvm(p);
       p->state = RUNNING;
@@ -530,8 +545,10 @@ cps()
         cprintf("%s \t %d  \t SLEEPING \t %d \n ", p->name, p->pid,p->priority);
       else if ( p->state == RUNNING )
         cprintf("%s \t %d  \t RUNNING \t %d \n ", p->name, p->pid,p->priority);
-      else if(p->state == RUNNABLE)
+      else if(p->pid){
+        //p->state="RUNNABLE";
         cprintf("%s \t %d  \t RUNNABLE \t %d \n ", p->name, p->pid,p->priority);
+      }
   }
   
   release(&ptable.lock);
@@ -539,7 +556,20 @@ cps()
   return 22;
 }
 
-
+int help(){
+  cprintf("Command name  \t Description\n");
+  cprintf("ps            \t Process status\n");
+  cprintf("ls            \t list files and directories\n");
+  cprintf("cd            \t Change directory\n");
+  cprintf("foo (num)     \t creates num child processes\n");
+  cprintf("rm            \t remove files and directories\n");
+  cprintf("wc (filename) \t Word Count for the specified file\n");
+  cprintf("echo          \t print text\n");
+  cprintf("mkdir         \t Make new directory\n");
+  cprintf("kill (pid)    \t to kill a process\n");
+  //cprintf("Command name \t Description\n");
+  return 22;
+}
 //PAGEBREAK: 36
 // Print a process listing to console.  For debugging.
 // Runs when user types ^P on console.

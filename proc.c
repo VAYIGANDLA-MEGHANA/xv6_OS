@@ -568,8 +568,8 @@ int help(){
   cprintf("mkdir         \tMake new directory\n");
   cprintf("kill (pid)    \tto kill a process\n");
   cprintf("grep          \tsearches the named input\n");
-  cprintf("mv            \tmoves one or more files or directories from one place to another");
-  cprintf("cp            \tcopying files and directories");
+  cprintf("mv            \tmoves one or more files or directories from one place to another\n");
+  cprintf("cp            \tcopying files and directories\n");
   //cprintf("Command name \t Description\n");
   return 22;
 }

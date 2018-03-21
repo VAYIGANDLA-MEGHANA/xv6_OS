@@ -23,13 +23,15 @@ main(int argc, char *argv[])
       printf(1, "%d failed in fork!\n", getpid() );
     } else if ( id > 0 ) {  //parent
       printf(1, "Parent %d creating child  %d\n", getpid(), id );
-      wait ();
+     // wait ();
    } else {   // child
       printf(1, "Child %d created\n",getpid() );
-      for ( z = 0; z < 8000000.0; z += 10.01 )
-         x =  x + 3.14 * 89.64;   // useless calculations to consume CPU time
+      //while(1);
+      for ( z = 0; z < 300000000000.0; z += 0.01 )
+       x =  x + 3.14 * 89.64; 
       break;
     }
   }
+    // useless calculations to consume CPU time
   exit();
 }
